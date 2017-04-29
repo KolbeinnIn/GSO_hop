@@ -6,17 +6,14 @@ CREATE TABLE utgefandi
 	land VARCHAR(55),
 	arStofnad CHAR(4)
 );
-
 CREATE TABLE flokkur(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL
 );
-
 CREATE TABLE tegund(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn NOT NULL
 );
-
 CREATE TABLE flytjandi(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL,
@@ -26,8 +23,25 @@ CREATE TABLE flytjandi(
 	FOREIGN KEY flokkur_ID REFERENCES flokkur(ID)
 );
 CREATE TABLE diskur(
-	
-	
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nafn VARCHAR(55),
+	utgafudagur DATE,
+	utgefandi_ID INT,
+	FOREIGN KEY utgefandi_ID REFERENCES utgefandi(ID)
+);
+CREATE TABLE lag(
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nafn VARCHAR(55) NOT NULL,
+	hofundur VARCHAR(55) NOT NULL,
+	lengd TIME, --"HH-MM-SS"
+	texti VARCHAR(n),
+	tegund_ID INT,
+	flytjandi_ID INT,
+	diskur_ID INT
+	FOREIGN KEY flytjandi_ID REFERENCES flytjandi(ID),
+	FOREIGN KEY tegund_ID REFERENCES tegund(ID),
+	FOREIGN KEY diskur_ID REFERENCES diskur(ID)
+);
 	
 	
 	
