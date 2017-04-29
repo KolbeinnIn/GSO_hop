@@ -1,0 +1,44 @@
+CREATE DATABASE lokaverkefni
+
+CREATE TABLE utgefandi
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nafn VARCHAR(55) NOT NULL,
+	land VARCHAR(55),
+	arStofnad CHAR(4)
+);
+
+CREATE TABLE flokkur(
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nafn VARCHAR(55) NOT NULL
+);
+
+CREATE TABLE tegund(
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nafn NOT NULL
+);
+
+CREATE TABLE flytjandi(
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nafn VARCHAR(55) NOT NULL,
+	faedingardagur DATE,
+	danardagur DATE,
+	flokkur_ID INT,
+	FOREIGN KEY flokkur_ID REFERENCES flokkur(ID)
+);
+CREATE TABLE diskur(
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
