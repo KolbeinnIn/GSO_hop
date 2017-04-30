@@ -43,6 +43,73 @@ CREATE TABLE lag(
 	FOREIGN KEY diskur_ID REFERENCES diskur(ID)
 );
 	
+INSERT INTO
+	utgefandi(nafn,land,arStofnad)
+VALUES
+	("Kristbergur Útgáfa", "Ísland","1996"),
+	("SH Records", "Bandaríkin", "2001"),
+	("Richardson Ltd.","Bandaríkin", "1976");
+	
+INSERT INTO
+	flokkur(nafn)
+VALUES
+	("Sóló"),
+	("Hljómsveit"),
+	("Dúó"),
+	("Kvartett"),
+	("Kór");
+	
+INSERT INTO
+	tegund(nafn)
+VALUES
+	("Popp"),
+	("Rokk"),
+	("Jazz"),
+	("Blues"),
+	("Reggae"),
+	("Hip Hop"),
+	("Rapp");
+	
+INSERT INTO
+	flytjandi(nafn,faedingardagur,danardagur,flokkur_ID)
+VALUES
+	("
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
