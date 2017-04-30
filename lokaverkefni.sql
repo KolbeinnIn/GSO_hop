@@ -1,4 +1,4 @@
-CREATE DATABASE lokaverkefni
+CREATE DATABASE kennitala_lokaverkefni
 
 CREATE TABLE utgefandi
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE lag(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL,
 	hofundur VARCHAR(55) NOT NULL,
-	lengd TIME, --"HH-MM-SS"
+	lengd TIME, --"HH:MM:SS"
 	texti VARCHAR(n),
 	tegund_ID INT,
 	flytjandi_ID INT,
