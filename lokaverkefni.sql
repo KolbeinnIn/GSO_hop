@@ -67,18 +67,18 @@ VALUES
 	2("Rokk"),
 	3("Electronic"),
 	4("Indie"),
-	5("Reggae"),
+	5("Gospel"),
 	6("Hip Hop"),
 	7("Rapp");
 INSERT INTO
 	flytjandi(nafn,faedingardagur,danardagur,flokkur_ID)
 VALUES
-	("Kollye East", 2000-08-09, 2017-07-22, 1),
-	("Floof", 1998-03-29,2004-06-10,2),
-	("Kristberg ´Poof´ Pálsson & Maggi",2005-05-05,NULL,3),
-	("Karmin", 2012-01-10,NULL,4),
-	("Kvennakórinn Sóley",1976-10-22,1995-02-17,5),
-	("TwentyØnePiløts",2009-12-01,NULL,3);
+	1("Kollye East", 2000-08-09, 2017-07-07, 1),
+	2("Floof", 1998-03-29,2004-06-10,2),
+	3("Kristberg ´Poof´ Pálsson & Maggi",2005-05-05,NULL,3),
+	4("Karmin", 2012-01-10,NULL,4),
+	5("Kvennakórinn Sóley",1976-10-22,1995-02-17,5),
+	6("TwentyØnePiløts",2009-12-01,NULL,3);
 	
 INSERT INTO
 	diskur(nafn,utgafudagur,utgefandi_ID)
@@ -103,18 +103,18 @@ VALUES
 	("Semi-Automatic",00:04:14,"TEXTI",1,6,4),
 	("Trees",00:04:27,"TEXTI",3,6,4),
 	("HeavyDirtySoul",00:03:55,"TEXTI",2,1,1),
-	("Ride",00:03:35,"TEXTI",2,2,3),
+	("Ride",00:03:35,"TEXTI",2,2,2),
 	("Lane Boy",00:04,13,"TEXTI",2,3,7),
 	("Tear in My Heart",00:03:08,"TEXTI",1,4,6)
-	("The Judge",00:04:58,"TEXTI",5,5,),
-	("Goner",00:03:57,"TEXTI",),
-	("Polarize",00:03:47,"TEXTI",),
-	("Message Man",00:04:00,"TEXTI",),
-	(""),
-	(""),
-	(""),
-	(""),
-	("");
+	("The Judge",00:04:58,"TEXTI",6,5,3),
+	("Goner",00:03:57,"TEXTI",7,4,1),
+	("Polarize",00:03:47,"TEXTI",3,2,1),
+	("Message Man",00:04:00,"TEXTI",7,1,2),
+	("Oh Happy Day",00:04:59,"TEXTI",5,5,4),
+	("I Wanna Get Better",00:03:24,"TEXTI",2,2,7),
+	("We Don't Believe What's on TV",00:02:58,"TEXTI",4,4,2),
+	("Not Today",00:03:59,"TEXTI",7,2,6),
+	("Rollercoaster",00:03:08,"TEXTI",3,3,6);
 
 	
 	
