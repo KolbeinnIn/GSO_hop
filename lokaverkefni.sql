@@ -15,6 +15,10 @@ CREATE TABLE tegund(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL
 );
+CREATE TABLE hofundur(
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nafn VARCHAR(55) NOT NULL
+);
 CREATE TABLE flytjandi(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL,
@@ -39,9 +43,11 @@ CREATE TABLE lag(
 	tegund_ID INT,
 	flytjandi_ID INT,
 	diskur_ID INT,
+	hofundur_ID INT,
 	FOREIGN KEY (flytjandi_ID) REFERENCES flytjandi(ID),
 	FOREIGN KEY (tegund_ID) REFERENCES tegund(ID),
-	FOREIGN KEY (diskur_ID) REFERENCES diskur(ID)
+	FOREIGN KEY (diskur_ID) REFERENCES diskur(ID),
+	FOREIGN KEY (hofundur_ID) REFERENCES hofundur(ID)
 );
 	
 INSERT INTO
@@ -70,31 +76,43 @@ VALUES
 	("Gospel"),
 	("Hip Hop"),
 	("Rapp");
+	
+INSERT INTO
+	hofundur(nafn)
+VALUES
+	("Tyler Joseph"),
+	("Joshua Dun"),
+	("Jack Antonoff"),
+	("Philip Doddridge"),
+	("Le Che De Ann Monique Martin"),
+	("Thomas Schleiter");
+	
+	
 INSERT INTO
 	flytjandi(nafn,faedingardagur,danardagur,flokkur_ID)
 VALUES
-	("Kollye East", 2000-08-09, 2017-07-07, 1),
-	("Floof", 1998-03-29,2004-06-10,2),
-	("Kristberg ´Poof´ Pálsson & Maggi",2005-05-05,NULL,3),
-	("Karmin", 2012-01-10,NULL,4),
-	("Kvennakórinn Sóley",1976-10-22,1995-02-17,5),
-	("TwentyØnePiløts",2009-12-01,NULL,3);
+	("Kanye West", "2000-08-09", "2017-07-07", 1),
+	("Against the Current", "2011-03-29",NULL,2),
+	("Bleachers","2005-05-05",NULL,3),
+	("Karmin", "2012-01-10",NULL,4),
+	("Edwin Hawking Singers","1976-10-22","1995-02-17",5),
+	("Twenty Øne Piløts","2009-12-01",NULL,3);
 	
 INSERT INTO
 	diskur(nafn,utgafudagur,utgefandi_ID)
 VALUES
-	("Pen",2017-05-03,1),
-	("Blurryface",2015-05-17,2),
-	("Rain",2016-09-26,3),
-	("Vessel",2013-01-08,3),
-	("Regional at Best",2011-07-08,2),
-	("Drought",2013-12-05,1),
-	("Gravity",2015-02-17,3);
+	("Pen","2017-05-03",1),
+	("Blurryface","2015-05-17",2),
+	("Rain","2016-09-26",3),
+	("Vessel","2013-01-08",3),
+	("Regional at Best","2011-07-08",2),
+	("Drought","2013-12-05",1),
+	("Gravity","2015-02-17",3);
 
 INSERT INTO
-	lag(nafn,hofundur,lengd,texti,tegund_ID,flytjandi_ID,diskur_ID)
+	lag(nafn,lengd,texti,tegund_ID,flytjandi_ID,diskur_ID,hofundur_ID)
 VALUES
-	("Guns for Hands",00:04:36,"Guns for Hands
+	("Guns for Hands","00:04:36","Guns for Hands
 	I know what you think in the morning,
 	When the sun shines on the ground,
 	And shows what you have done,
@@ -152,10 +170,10 @@ VALUES
 	I'm trying, I'm trying to sleep,
 	I'm trying, I'm trying to sleep,
 	But I can't, but I can't when you all have,
-	Guns for hands, yeah.",1,6,4),
+	Guns for hands, yeah.",1,6,4,1),
 	
 	
-	("Holding On to You",00:04:25,"Holding On To You
+	("Holding On to You","00:04:25","Holding On To You
 	I'm taking over my body,
 	Back in control, no more shotty,
 	I bet a lot of me was lost,
@@ -206,11 +224,11 @@ VALUES
 	To an introspective beat,
 	It ain't the speakers that bump hearts,
 	It's our hearts that make the beat.
-	And I'll be holding on to you. [8x]",4,6,5),
+	And I'll be holding on to you. [8x]",4,6,5,2),
 	
 	
 	
-	("Car Radio",00:04:27,"Car Radio
+	("Car Radio","00:04:27","Car Radio
 	I ponder of something great
 	My lungs will fill and then deflate
 	They fill with fire
@@ -291,11 +309,11 @@ VALUES
 	With what I once bought
 	'Cause somebody stole
 	My car radio
-	And now I just sit in silence",1,6,5),
+	And now I just sit in silence",1,6,5,3),
 	
 	
 	
-	("Forest",00:04:26,"Forest
+	("Forest","00:04:26","Forest
 	I don't know why I feed on emotion
 	There's a stomach inside my brain
 	I don't wanna be heard
@@ -371,12 +389,11 @@ VALUES
 	Hands held higher,
 	We'll be on fire
 	Hands held higher,
-	We'll be on fire",1,6,5),
+	We'll be on fire",1,6,5,4),
 	
 	
 	
-	("Kitchen Sink",00:05:34,"Kitchen Sink
-	Nobody thinks what I think,
+	("Kitchen Sink","00:05:34","Nobody thinks what I think,
 	Nobody dreams when they blink
 	Think things on the brink of blasphemy
 	I'm my own shrink
@@ -418,12 +435,11 @@ VALUES
 	Leave me alone [4x]
 	Leave me alone
 	Don't leave me alone.
-	Oh [5x]",1,6,5),
+	Oh [5x]",1,6,5,5),
 	
 	
 	
-	("Semi-Automatic",00:04:14,"Semi-Automatic
-	Night falls with gravity,
+	("Semi-Automatic","00:04:14","Night falls with gravity,
 	The earth turns from sanity,
 	Taking my only friend I know,
 	He leaves a lot, his name is Hope.
@@ -468,12 +484,11 @@ VALUES
 	'Cause I'm twisted up, I'm twisted up inside my mind.
 	Doo,
 	Doo, doo, doo-doo-doo... [8x]
-	Doo",1,6,4),
+	Doo",1,6,4,6),
 	
 
 	
-	("Trees",00:04:27,"Trees
-	I know where you stand
+	("Trees","00:04:27","I know where you stand
 	Silent in the trees
 	And that's where I am
 	Silent in the trees.
@@ -505,12 +520,11 @@ VALUES
 	Hello, hello.
 	Na na, na na na nah na na. [2x]
 	Hello, hello.
-	Hello, hello. [2x]",3,6,4),
+	Hello, hello. [2x]",3,6,4,1),
 	
 	
 	
-	("HeavyDirtySoul",00:03:55,"Heavy Dirty Soul
-	There's an infestation in my mind's imagination,
+	("HeavyDirtySoul","00:03:55","There's an infestation in my mind's imagination,
 	I hope that they choke on smoke 'cause I'm smoking them out the basement,
 	This is not rap, this is not hip-hop,
 	Just another attempt to make the voices stop,
@@ -560,12 +574,11 @@ VALUES
 	Can you save, can you save my—save my—
 	Can you save my heavydirtysoul?
 	Can you save, can you save my—save my—
-	Can you save my heavydirtysoul?",2,1,1),
+	Can you save my heavydirtysoul?",2,6,1,2),
 	
 	
 	
-	("Ride",00:03:35,"Ride
-	I just wanna stay in the sun where I find
+	("Ride","00:03:35","I just wanna stay in the sun where I find
 	I know it's hard sometimes
 	Pieces of peace in the sun's peace of mind
 	I know it's hard sometimes
@@ -618,12 +631,11 @@ VALUES
 	I've been thinking too much (help me)
 	I've been thinking too much (I've been thinking too much)
 	I've been thinking too much
-	Help me",2,2,2),
+	Help me",2,6,2,3),
 	
 	
 
-	("Lane Boy",00:04,13,"Lane Boy
-	They say, Stay in your lane, boy, lane boy,
+	("Lane Boy","00:04,13","They say, Stay in your lane, boy, lane boy,
 	But we go where we want to
 	They think this thing is a highway, highway,
 	But will they be alive tomorrow?
@@ -683,12 +695,11 @@ VALUES
 	They say, Stay in your lane, boy, lane boy,
 	But we go where we want to
 	They think this thing is a highway, highway,
-	But will they be alive tomorrow?",2,3,7),
+	But will they be alive tomorrow?",2,6,7,4),
 	
 	
 	
-	("Tear in My Heart",00:03:08,"	Tear In My Heart
-	안녕하세요 [An-nyŏng-ha-se-yo]
+	("Tear in My Heart","00:03:08","안녕하세요 [An-nyŏng-ha-se-yo]
 	Sometimes you've got to bleed to know,
 	That you're alive and have a soul,
 	But it takes someone to come around to show you how.
@@ -731,12 +742,11 @@ VALUES
 	My heart is my armor,
 	She's the tear in my heart, she's a carver,
 	She's a butcher with a smile, cut me farther,
-	Than I've ever been.",1,4,6)
+	Than I've ever been.",1,6,6,5),
 	
 	
 	
-	("The Judge",00:04:58,"The Judge
-	Na na na na, oh oh
+	("The Judge","00:04:58","Na na na na, oh oh
 	Na na na na, oh oh
 	Na na na na, oh oh
 	When the leader of the bad guys sang,
@@ -785,11 +795,11 @@ VALUES
 	Na na na na, oh oh (You're the judge, oh no, set me free)
 	Na na na na, oh oh (You're the judge, oh no, set me free)
 	(Josh Dun!)
-	(You're the judge, oh no, set me free)",6,5,3),
+	(You're the judge, oh no, set me free)",6,6,3,6),
 	
 	
 
-	("Goner",00:03:57,"I'm a goner, somebody catch my breath,
+	("Goner","00:03:57","I'm a goner, somebody catch my breath,
 	I'm a goner, somebody catch my breath,
 	I want to be known by you,
 	I want to be known by you.
@@ -823,72 +833,61 @@ VALUES
 	I'm a goner, somebody catch my breath,
 	I'm a goner, somebody catch my breath,
 	I want to be known by you,
-	I want to be known by you.",7,4,1),
+	I want to be known by you.",7,6,1,1),
 	
 
 	
-	("Polarize",00:03:47,"Help me polarize, help me polarize,
-	Help me down,
-	Those stairs is where I'll be hiding all my problems,
-	Help me polarize, help me polarize,
-	Help me out,
-	My friends and I, we've got a lot of problems.
-	You know where I'm coming,
-	From though I am running,
-	To you, all I feel is deny, deny, denial,
-	I wanted to be a better brother, better son,
-	Wanted to be a better adversary to the evil I have done,
-	I have none to show to the one I love,
-	But deny, deny, denial.
-	Help me polarize, help me polarize,
-	Help me down,
-	Those stairs is where I'll be hiding all my problems,
-	Help me polarize, help me polarize,
-	Help me out,
-	My friends and I, we've got a lot of problems.
-	Polarize is taking your disguises,
-	Separating them, splitting them up from wrong and right,
-	It's deciding where to die and deciding where to fight,
-	Deny, deny, denial.
-	I wanted to be a better brother, better son,
-	Wanted to be a better adversary to the evil I have done,
-	I have none to show to the one I love,
-	But deny, deny, denial.
-	Help me polarize, help me polarize,
-	Help me down,
-	Those stairs is where I'll be hiding all my problems,
-	Help me polarize, help me polarize,
-	Help me out,
-	My friends and I, we've got a lot of problems.
-	We have problems
-	We have problems
-	[2x]
-	Domingo en fuego, I think I lost my halo,
-	I don't know where you are,
-	You'll have to come and find me, find me.
-	We have problems
-	We have problems
-	Help me polarize, help me polarize,
-	Help me out,
-	My friends and I have problems.
-	Help me polarize, help me polarize,
-	Help me out,
-	My friends and I have problems.
-	Help me polarize, help me polarize,
-	Help me out,
-	My friends and I have problems.
-	Help me polarize, help me polarize,
-	Help me out,
-	My friends and I have problems.
-	We have problems
-	We have problems
-	I wanted to be a better brother, better son
-	I wanted to be a better brother, better son
-	I wanted to be a better brother, better son",3,2,1),
+	("Gravity","00:03:53","Do you remember feeling invincible?
+	When there was trouble it was us against the world
+	We kept running, running through the night
+	Chasing the sun 'til anything felt right
+	Can you save me now?
+	I get lost up in the clouds
+	Can you save me now?
+	You were my gravity
+	Can you save me now?
+	When the ground drops out I get lost in the clouds
+	Save me now
+	You were my gravity
+	Now my world is shattering
+	Ooooh, you were my gravity
+	Ooooh, you were my gravity
+	You left me out there with no one but myself
+	In an open field for the lightning to strike me down
+	I was the moon, you were the sun
+	I can't seem to shine now that you're gone
+	Now I'm out of orbit cause you left without warning
+	Are you somewhere better now?
+	Can you save me now?
+	I get lost up in the clouds
+	Can you save me now?
+	You were my gravity
+	Can you save me now?
+	When the ground drops out I get lost in the clouds
+	Save me now
+	You were my gravity
+	Now my world is shattering
+	Ooooh, you were my gravity
+	Ooooh, you were my gravity
+	When you went away, thought I'd never be the same
+	Would the nightmare ever end?
+	If I could do it again I wouldn't change a thing 'cause it's made me who I am
+	And now I'm shattering
+	Can you save me now?
+	When the ground drops out I get lost up in the clouds
+	Save me now
+	You were my gravity
+	Can you save me now?
+	When the ground drops out I get lost up in the clouds
+	Save me now
+	You were my gravity
+	Now my world is shattering
+	Ooooh, now my world is shattering
+	Ooooh, you were my gravity",3,2,7,2),
 	
 	
 	
-	("Message Man",00:04:00,"Eh! Eh! Eh! Eh!
+	("Message Man","00:04:00","Eh! Eh! Eh! Eh!
 	Eh! Eh! Eh! Eh!
 	No no no no no no (Eh! Eh! Eh! Eh!)
 	Yeah yeah yeah yeah yeah yeah (Eh! Eh! Eh! Eh!)
@@ -948,11 +947,11 @@ VALUES
 	These lyrics aren't for everyone, only few understand.
 	My people singing
 	My people singing
-	My people singing",7,1,2),
+	My people singing",7,6,2,3),
 	
 	
 	
-	("Oh Happy Day",00:04:59,"Oh, happy day 
+	("Oh Happy Day","00:04:59","Oh, happy day 
 	(Oh, happy day) 
 	Oh, happy day 
 	(Oh, happy day) 
@@ -1037,12 +1036,11 @@ VALUES
 	Oh yeah
 	(Oh, happy day)
 	Mmm, lord
-	(Oh, happy day)",5,5,4),
+	(Oh, happy day)",5,5,4,4),
 
 
 
-
-	("I Wanna Get Better",00:03:24,"Hey, I hear the voice of a preacher from the back room
+	("I Wanna Get Better","00:03:24","Hey, I hear the voice of a preacher from the back room
 	Calling my name and I follow just to find you
 	I trace the faith to a broken down television and put on the weather
 	And I've trained myself to give up on the past 'cause
@@ -1092,11 +1090,11 @@ VALUES
 	I wanna get better
 	I didn't know I was broken 'til I wanted to change
 	I wanna get better, better, better, better,
-	I wanna get better",2,2,7),
+	I wanna get better",2,3,7,5),
 	
 	
 	
-	("We Don't Believe What's on TV",00:02:58,"Yeah, yeah, yeah!
+	("We Don't Believe What's on TV","00:02:58","Yeah, yeah, yeah!
 	We don't believe what's on TV,
 	Because it's what we want to see,
 	And what we want, we know we can't believe,
@@ -1125,11 +1123,11 @@ VALUES
 	I just wanna know what's on your mind,
 	I used to say, I wanna die before I'm old,
 	But because of you I might think twice.
-	Yeah, yeah, yeah! [repeat]",4,4,2),
+	Yeah, yeah, yeah! [repeat]",4,4,2,6),
 
 
 
-	("Not Today",00:03:59,"I don't know why, I just feel I'm better off,
+	("Not Today","00:03:59","I don't know why, I just feel I'm better off,
 	Staying in the same room I was born in,
 	I look outside, and see a whole world better off,
 	Without me in it trying to transform it,
@@ -1171,15 +1169,11 @@ VALUES
 	Bah bah bah bah bah (not today), bah bah bah bah bah (not today, no, not today)
 	Buh buh bah, buh buh bah (not today, oh nah nah no)
 	Bah bah bah bah bah, bah bah bah bah bah
-	Ooh, ooh, ooh, ooh, ooh",7,2,6),
+	Ooh, ooh, ooh, ooh, ooh",7,6,6,1),
 
 	
 	
-	
-	
-	
-	
-	("Rollercoaster",00:03:08,"It was summer when I saw your face
+	("Rollercoaster","00:03:08","It was summer when I saw your face
 	But like a teenage runaway
 	Oh god I never thought we'd take it that far
 	Some killer queen you are
@@ -1224,7 +1218,7 @@ VALUES
 	Rollercoaster, I don't say no
 	Rollercoaster, when you don't say no
 	And it's such a rollercoaster
-	Some killer queen you are",3,3,6);
+	Some killer queen you are",3,3,6,2);
 
 	
 	
