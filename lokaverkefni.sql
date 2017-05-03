@@ -94,7 +94,7 @@ VALUES
 INSERT INTO
 	lag(nafn,hofundur,lengd,texti,tegund_ID,flytjandi_ID,diskur_ID)
 VALUES
-   --("LAG",         00:00:00, "Texti", tegund,flytjandi,diskur)
+   --("LAG", 00:00:00, "Texti", tegund,flytjandi,diskur)
 	("Guns for Hands",00:04:36,"TEXTI",1,6,4),
 	("Holding On to You",00:04:25,"TEXTI",4,6,5),
 	("Car Radio",00:04:27,"TEXTI",1,6,5),
@@ -105,8 +105,8 @@ VALUES
 	("HeavyDirtySoul",00:03:55,"TEXTI",2,1,1),
 	("Ride",00:03:35,"TEXTI",2,2,3),
 	("Lane Boy",00:04,13,"TEXTI",2,3,7),
-	("Tear in My Heart",00:03:08,"TEXTI",)
-	("The Judge",00:04:58,"TEXTI",),
+	("Tear in My Heart",00:03:08,"TEXTI",1,4,6)
+	("The Judge",00:04:58,"TEXTI",5,5,),
 	("Goner",00:03:57,"TEXTI",),
 	("Polarize",00:03:47,"TEXTI",),
 	("Message Man",00:04:00,"TEXTI",),
