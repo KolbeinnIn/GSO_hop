@@ -34,10 +34,9 @@ CREATE TABLE diskur(
 	utgefandi_ID INT,
 	FOREIGN KEY (utgefandi_ID) REFERENCES utgefandi(ID)
 );
-CREATE TABLE lag(
+CREATE TABLE llag(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL,
-	hofundur VARCHAR(55) NOT NULL,
 	lengd TIME,
 	texti LONGTEXT,
 	tegund_ID INT,
@@ -131,7 +130,7 @@ JOIN tegund
 WHERE tegund.nafn = "Electronic";
 
 --d
-SELECT lag,lengd
+SELECT lengd
 FROM lag
 WHERE lengd > "00:05:00";
 
@@ -142,6 +141,24 @@ WHERE utgafudagur > "2010";
 
 --f
 SELECT diskur
+
+
+
+
+
+
+
+
+
+--o
+SELECT flytjandi.nafn as "Flytjandi", lag.nafn as "lag"
+FROM flytjandi
+JOIN lag
+HAVING MAX(flytjandi.faedingardagur);
+
+SELECT MIN(flytjandi.faedingardagur) as "Fæðingardagur"
+FROM flytjandi
+
 
 
 

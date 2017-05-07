@@ -6,23 +6,19 @@ CREATE TABLE utgefandi(
 	land VARCHAR(55),
 	arStofnad CHAR(4),
 	stofnandi VARCHAR(55)
-);ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+);
 CREATE TABLE flokkur(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+);
 CREATE TABLE tegund(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+);
 CREATE TABLE hofundur(
     ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nafn VARCHAR(55) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+);
 CREATE TABLE flytjandi(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL,
@@ -30,20 +26,17 @@ CREATE TABLE flytjandi(
 	danardagur DATE,
 	flokkur_ID INT,
 	FOREIGN KEY (flokkur_ID) REFERENCES flokkur(ID)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+);
 CREATE TABLE diskur(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55),
 	utgafudagur DATE,
 	utgefandi_ID INT,
 	FOREIGN KEY (utgefandi_ID) REFERENCES utgefandi(ID)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+);
 CREATE TABLE lag(
 	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nafn VARCHAR(55) NOT NULL,
-	hofundur VARCHAR(55) NOT NULL,
 	lengd TIME,
 	texti LONGTEXT,
 	tegund_ID INT,
@@ -54,7 +47,7 @@ CREATE TABLE lag(
 	FOREIGN KEY (tegund_ID) REFERENCES tegund(ID),
 	FOREIGN KEY (diskur_ID) REFERENCES diskur(ID),
 	FOREIGN KEY (hofundur_ID) REFERENCES hofundur(ID)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 	
 INSERT INTO
 	utgefandi(nafn,land,arStofnad,stofnandi)
@@ -641,7 +634,7 @@ VALUES
 	
 	
 
-	("Lane Boy","00:04,13","They say, Stay in your lane, boy, lane boy,
+	("Lane Boy","00:04:13","They say, Stay in your lane, boy, lane boy,
 	But we go where we want to
 	They think this thing is a highway, highway,
 	But will they be alive tomorrow?
@@ -1228,13 +1221,47 @@ VALUES
 
 	
 	
+	
+--Hluti B
+
 --Hluti B
 
 --a
 SELECT lag.nafn as "lag"
 FROM lag
-JOIN diskur
+JOIN diskur on lag.diskur_ID = diskur.ID
 WHERE diskur.nafn = "Regional at Best";
+
+--b
+SELECT lag.nafn as "lag"
+FROM lag
+JOIN flytjandi on lag.flytjandi_ID = flytjandi.ID
+WHERE flytjandi.nafn = "Kanye West";
+
+--c
+SELECT lag.nafn as "lag"
+FROM lag
+JOIN tegund on lag.tegund_ID = tegund.ID
+WHERE tegund.nafn = "Electronic";
+
+--d
+SELECT lengd
+FROM lag
+WHERE lengd > "00:05:00";
+
+--e
+SELECT diskur,utgafudagur
+FROM diskur
+WHERE utgafudagur > "2010";
+
+--o
+SELECT flytjandi.nafn as "Flytjandi", lag.nafn as "lag"
+FROM flytjandi
+JOIN lag on lag.flokkur_ID = flytjandi.ID
+HAVING MAX(flytjandi.faedingardagur);
+
+SELECT MIN(flytjandi.faedingardagur) as "Fæðingardagur"
+FROM flytjandi
 
 
 
